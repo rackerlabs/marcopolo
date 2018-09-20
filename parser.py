@@ -12,4 +12,8 @@ results = spider.Spider(url, oauth).retrieve_polos()
 polos = []
 for x in results:
     print(x[0])
-    polos.append(objects.parse(x[1]))
+    try:
+        parsed = objects.parse(x[1])
+    except:
+        continue
+    polos.append(parsed)
